@@ -1,0 +1,53 @@
+h1{
+	text-align: center;
+	margin: 25px auto;
+}
+
+td{
+	text-align: center;
+}
+
+.edit{
+	cursor: pointer;
+	border: 2px solid transparent;
+	padding: 7px;
+}
+
+.edit:hover{
+	border: 2px solid #b8daff;
+	background-color: #b8daff;
+	color: white;
+}
+
+.group-inputs{
+	width: 75%;
+}
+
+#chart-button{
+	color:white;
+}
+
+#chart-button{
+	text-decoration: none;
+}
+
+#assign-button{
+	color: white;
+}
+#assign-button:hover{
+	text-decoration: none;
+}
+#stu-button{
+	color: white;
+}
+#stu-button:hover{
+	text-decoration: none;
+}
+
+#chartContainer{
+	margin: 30px auto;
+	margin-bottom: 50px;
+}
+#classTable{
+	margin: 25px auto;
+}

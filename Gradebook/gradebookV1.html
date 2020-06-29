@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Gradebook</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="gradebookV1.css">
+	
+	<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+
+	<div class="container">
+
+		<h1 class="h1">Gradebook App</h1>
+		
+		<table id="classTable" class="table table-hover">
+			<tr id="head" class="table-primary">
+				<td></td>
+	 			<td>Quiz1<br><span id="assignmentTotal">50</span></td>
+				<td>Test1<br><span id="assignmentTotal">100</span></td>
+				<td>Quiz2<br><span id="assignmentTotal">50</span></td>
+				<td>Test2<br><span id="assignmentTotal">100</span></td>
+				<td>Total<br><span id="grandTotal">300</span></td>
+			</tr> 
+			<tr>
+				<td><span id="student">Lopez, Chris</span></td>
+				<td><span class="edit" onclick="editScore(event)">45</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">90</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">50</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">88</span></button></td>
+				<td><span>273</span></button></td> 
+			</tr>
+			<tr>
+				<td><span id="student">Lopez, Curt</span></td>
+			 	<td><span class="edit" onclick="editScore(event)">25</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">76</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">30</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">66</span></button></td>
+				<td><span>197</span></button></td>
+			</tr>
+			<tr>
+				<td><span id="student">Lopez, Joanna</span></td>
+				<td><span class="edit" onclick="editScore(event)">50</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">100</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">50</span></button></td>
+				<td><span class="edit" onclick="editScore(event)">100</span></button></td>
+				<td><span>300</span></button></td>
+			</tr> 
+		</table>
+
+		<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+	</div>
+	<nav class="navbar navbar-expand-lg fixed-bottom navbar-dark bg-dark">
+		 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" 	aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<span class="navbar-brand mb-0 h1">Gradebook</span>
+  		<div class="collapse navbar-collapse">
+	  		<button class="btn" onclick="displayChart()"><a id="chart-button" href="#chartContainer">Chart</a></button>
+	  			<div class="container group-inputs">
+				<div class="input-group mb-0">
+					<div class="input-group-prepend">
+						<button class="btn" id="stu-button" onclick="addStudent()">Add Student</button>
+					</div>
+					<input type="text" class="form-control" id="fName" placeholder="First">
+					<input type="text" class="form-control" id="lName" placeholder="Last">
+					<div class="input-group-prepend">
+						<button id="assign-button" class="btn" onclick="addAssignment()">Add Assignment</button>
+					</div>
+					<input type="text" class="form-control" id="addAssignment" placeholder="New Assignment">
+					<input type="text" class="form-control" id="points" placeholder="Points">
+				</div>
+			</div>
+		</div>
+	</nav>
+	<script type="text/javascript" src="gradebookV1.js"></script>
+</body>
+</html>
