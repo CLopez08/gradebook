@@ -22,30 +22,6 @@
 				<td>Test2<br><span id="assignmentTotal">100</span></td>
 				<td>Total<br><span id="grandTotal">300</span></td>
 			</tr> 
-			<tr>
-				<td><span id="student">Lopez, Chris</span></td>
-				<td><span class="edit" onclick="editScore(event)">45</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">90</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">50</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">88</span></button></td>
-				<td><span>273</span></button></td> 
-			</tr>
-			<tr>
-				<td><span id="student">Lopez, Curt</span></td>
-			 	<td><span class="edit" onclick="editScore(event)">25</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">76</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">30</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">66</span></button></td>
-				<td><span>197</span></button></td>
-			</tr>
-			<tr>
-				<td><span id="student">Lopez, Joanna</span></td>
-				<td><span class="edit" onclick="editScore(event)">50</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">100</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">50</span></button></td>
-				<td><span class="edit" onclick="editScore(event)">100</span></button></td>
-				<td><span>300</span></button></td>
-			</tr> 
 		</table>
 
 		<div id="chartContainer" style="height: 400px; width: 100%;"></div>
@@ -57,6 +33,7 @@
   		<span class="navbar-brand mb-0 h1">Gradebook</span>
   		<div class="collapse navbar-collapse">
 	  		<button class="btn" onclick="displayChart()"><a id="chart-button" href="#chartContainer">Chart</a></button>
+	  		<button class="btn" onclick="order()"><a id="order-button">Order</a></button>
 	  			<div class="container group-inputs">
 				<div class="input-group mb-0">
 					<div class="input-group-prepend">

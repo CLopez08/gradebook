@@ -1,3 +1,5 @@
+var studentData = [];
+var ascend = true;
 addEventListeners();
 
 function addAssignment(){
@@ -15,58 +17,71 @@ function addAssignment(){
 }
 
 function addEventListeners(){
-var assignmentInput = document.getElementById("addAssignment");
-var pointsInput = document.getElementById("points");
-var fNameInput = document.getElementById("fName");
-var lNameInput = document.getElementById("lName");
-assignmentInput.addEventListener("keyup", function(event) {
-	if(event.keyCode === 13) {
-		event.preventDefault();
-		document.getElementById("assign-button").click();
-	}
-});
-pointsInput.addEventListener("keyup", function(event) {
-	if(event.keyCode === 13) {
-		event.preventDefault();
-		document.getElementById("assign-button").click();
-	}
-});
-fNameInput.addEventListener("keyup", function(event) {
-	if(event.keyCode === 13) {
-		event.preventDefault();
-		document.getElementById("stu-button").click();
-	}
-});
-lNameInput.addEventListener("keyup", function(event) {
-	if(event.keyCode === 13) {
-		event.preventDefault();
-		document.getElementById("stu-button").click();
-	}
-});
+	var assignmentInput = document.getElementById("addAssignment");
+	var pointsInput = document.getElementById("points");
+	var fNameInput = document.getElementById("fName");
+	var lNameInput = document.getElementById("lName");
+	assignmentInput.addEventListener("keyup", function(event) {
+		if(event.keyCode === 13) {
+			event.preventDefault();
+			document.getElementById("assign-button").click();
+		}
+	});
+	pointsInput.addEventListener("keyup", function(event) {
+		if(event.keyCode === 13) {
+			event.preventDefault();
+			document.getElementById("assign-button").click();
+		}
+	});
+	fNameInput.addEventListener("keyup", function(event) {
+		if(event.keyCode === 13) {
+			event.preventDefault();
+			document.getElementById("stu-button").click();
+		}
+	});
+	lNameInput.addEventListener("keyup", function(event) {
+		if(event.keyCode === 13) {
+			event.preventDefault();
+			document.getElementById("stu-button").click();
+		}
+	});
 }
 
 function addStudent(){
 	//create new row and label first cell with name
 	var row = createStudent();
-	//Fills in all asignments for new student with zeros
-	console.log(row);
+	//add row to table and studentData array
 	if(row != -1){
-		fillScores(row);
+		addData(row);
 		document.getElementById("fName").value = "";
 		document.getElementById("lName").value = "";
 	}
-	
+}
+
+function addData(row){
+	let position = 0;
+	if(studentData.length > 0){
+		for(position; position < studentData.length; position++){
+			if(studentData[position].innerText.toLowerCase() > row.innerText.toLowerCase()){
+				break;
+			}
+		}	
+	}
+	let table = document.getElementById("classTable");
+	let newRow = table.insertRow(position+1);
+	let cell = newRow.insertCell(0);
+	cell.innerHTML = row.innerText;
+	fillScores(newRow);
+	studentData.splice(position, 0, newRow);
+	return newRow;
 }
 
 function createStudent(){
-	var table = document.getElementById("classTable");
 	var fName = document.getElementById("fName").value;
 	var lName = document.getElementById("lName").value;
 	if(fName != "" && lName != ""){
 		var name = lName + ", " + fName;
-		//figure out where to put student alphabetically
-		var studentNum = getPosition(name);
-		var row = table.insertRow(studentNum);
+		var row = document.createElement("TR");
 		var nameCell = row.insertCell(0);
 		nameCell.innerHTML = "<span id=\"student\">" + name + "</span>";
 		return row;
@@ -74,6 +89,30 @@ function createStudent(){
 		alert("Enter both first and last name");
 		return -1;
 	}
+}
+
+function order(){
+	let table = document.getElementById("classTable");
+	let position = 1;
+	for(let j = 0; j < studentData.length; j++){
+		table.deleteRow(1);
+	}
+	if(ascend){
+		ascend = false;
+		for(let i = studentData.length-1; i >= 0; i--){
+			let row = table.insertRow(position);
+			row.innerHTML = studentData[i].innerHTML;
+			position++;
+		}
+	} else {
+		ascend = true;
+		for(let i = 0; i < studentData.length; i++){
+			let row = table.insertRow(position);
+			row.innerHTML = studentData[i].innerHTML;
+			position++;
+		}
+	}
+
 }
 
 function displayChart() {
@@ -103,6 +142,7 @@ function displayChart() {
 }
 
 function editScore(e){
+	console.log(e);
 	var name = event.path[2].cells[0].innerText;
 	name = name;
 	var score = parseInt(prompt("Edit Score for: " + name));
@@ -181,23 +221,6 @@ function getClassNumbers(){
 		};
 		return breakdown;
 	}	
-}
-
-function getPosition(name){
-	var students = document.querySelectorAll('#student');
-	if(students.length == 0){
-		return 1;
-	}
-	var studentArr = Array.from(students);
-	var names = [];
-	for(var i = 0; i < studentArr.length; i++){
-		names[i] = studentArr[i].innerText.toLowerCase();
-	}
-	//Fix something here
-	name = name.toLowerCase();
-	names.unshift(name);
-	names.sort();
-	return (names.indexOf(name)) + 1;
 }
 
 function moveOver(){
